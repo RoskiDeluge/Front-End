@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Loader from "react-loader-spinner";
 import styled from 'styled-components';
@@ -46,6 +47,8 @@ const FormGroup = styled.div`
 
 const Login = () => {
 
+  const { push } = useHistory();
+
   const [ credentials, setCredentials ] = useState({
     username: "",
     password: ""
@@ -67,9 +70,9 @@ const Login = () => {
   const login = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/auth/login", credentials)
+      .post("http://localhost:5000/api/auth/login", credentials)
       .then(res => {
-        // console.log(res);
+        console.log(res);
         localStorage.setItem("authorization", res.data.token);
         setIsLoading(false);
         // props.history.push("/#");
@@ -79,6 +82,7 @@ const Login = () => {
         console.log("invalid login: ", err);
         setIsLoading(false)
       });
+    push("/trucks/");
   };
 
   return (

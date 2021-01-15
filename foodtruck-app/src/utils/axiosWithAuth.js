@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
     headers: {
       authorization: token
     },
-    baseURL: "https://lftt3.herokuapp.com" 
+    baseURL: "http://localhost:5000" 
   });
 };

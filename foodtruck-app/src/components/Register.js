@@ -74,7 +74,7 @@ const Register = () => {
   const register = e => {
     e.preventDefault();
     axios
-      .post("https://lftt3.herokuapp.com/api/auth/register", credentials)
+      .post("http://localhost:5000/api/auth/register", credentials)
       .then(res => {
           console.log(res);
         // localStorage.setItem("authorization", res.data.payload);

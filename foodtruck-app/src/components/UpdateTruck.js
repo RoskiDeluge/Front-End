@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { putData } from '../actions';
@@ -52,6 +53,8 @@ const initialItem = {
 
 const UpdateTruck = props => {
 
+  const { push } = useHistory();
+
   const  [ item, setItem ]  = useState(initialItem);
 
   useEffect(() => {
@@ -74,6 +77,7 @@ const UpdateTruck = props => {
   const handleUpdateTruck = e => {
     e.preventDefault();
     props.putData(item);
+    push("/mytrucks/")
   }
 
   return (
